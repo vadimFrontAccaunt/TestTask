@@ -1,5 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Text, View, Pressable, ScrollView } from 'react-native'
+import {
+	Text,
+	View,
+	Pressable,
+	ScrollView,
+	Image,
+	SafeAreaView,
+} from 'react-native'
 import { useSelector } from 'react-redux'
 import { styles } from '../../styles'
 import Chart from '../ChartBar/Chart'
@@ -14,6 +21,7 @@ const MainScreen = ({ navigation }) => {
 	const state = useSelector(state => state.cartoons)
 	const [loginStatus, setLoginStatus] = useState(false)
 	const [context, setContext] = useContext(Context)
+	const [browser, setBrowser] = useState(false)
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -21,10 +29,10 @@ const MainScreen = ({ navigation }) => {
 				message: 'Heelooo broth',
 				type: 'info',
 				duration: 3000,
-				statusBarHeight: 50,
+				statusBarHeight: 20,
 				titleStyle: { fontSize: 18, textAlign: 'center' },
 			})
-		}, 5000)
+		}, 15000)
 		return () => clearInterval(interval)
 	}, [])
 
@@ -35,94 +43,115 @@ const MainScreen = ({ navigation }) => {
 		empty = true
 	}
 	return (
-		<ScrollView>
-			{context ? (
+		<SafeAreaView style={{ marginTop: 20 }}>
+			<ScrollView>
+				{context ? (
+					<View
+						style={[
+							styles.flex,
+							{ marginLeft: 30, marginRight: 30, marginTop: 20 },
+						]}
+					>
+						<Text style={{ color: 'grey' }}>CARTON №</Text>
+						<Text style={{ color: 'grey' }}>ACT.</Text>
+					</View>
+				) : (
+					<View
+						style={[
+							styles.flex,
+							{ marginLeft: 30, marginRight: 30, marginTop: 20 },
+						]}
+					>
+						<Text style={{ color: 'grey' }}>НОМЕР №</Text>
+						<Text style={{ color: 'grey' }}>КОЛИЧЕСТВО</Text>
+					</View>
+				)}
+				{empty ? (
+					state.map(el => (
+						<ElementOfCartoon
+							key={el.cartonNumber}
+							cartonNumber={el.cartonNumber}
+							count={el.count}
+							navigation={navigation}
+						/>
+					))
+				) : (
+					<View>
+						{context ? (
+							<Text style={{ textAlign: 'center', marginTop: 50 }}>
+								Sorry, my state is empty
+							</Text>
+						) : (
+							<Text style={{ textAlign: 'center', marginTop: 50 }}>
+								Извини, мой стэйт пуст
+							</Text>
+						)}
+					</View>
+				)}
+				<Pressable
+					onPress={() => setLoginStatus(!loginStatus)}
+					style={{ marginTop: 20 }}
+				>
+					<View>
+						{context ? (
+							<Text
+								style={{ textAlign: 'center', fontSize: 24, color: 'grey' }}
+							>
+								Login
+							</Text>
+						) : (
+							<Text
+								style={{ textAlign: 'center', fontSize: 24, color: 'grey' }}
+							>
+								Логин
+							</Text>
+						)}
+					</View>
+				</Pressable>
+				<Modal visible={loginStatus} transparent={false}>
+					<View>
+						<Pressable onPress={() => setLoginStatus(!loginStatus)}>
+							<Text style={styles.closed}>X</Text>
+						</Pressable>
+						<FaceId />
+					</View>
+				</Modal>
+				<Chart />
+				<RandomScreen />
 				<View
 					style={[
 						styles.flex,
-						{ marginLeft: 30, marginRight: 30, marginTop: 20 },
+						{ alignItems: 'center', marginLeft: 5, marginRight: 5 },
 					]}
 				>
-					<Text style={{ color: 'grey' }}>CARTON №</Text>
-					<Text style={{ color: 'grey' }}>ACT.</Text>
-				</View>
-			) : (
-				<View
-					style={[
-						styles.flex,
-						{ marginLeft: 30, marginRight: 30, marginTop: 20 },
-					]}
-				>
-					<Text style={{ color: 'grey' }}>НОМЕР №</Text>
-					<Text style={{ color: 'grey' }}>КОЛИЧЕСТВО</Text>
-				</View>
-			)}
-			{empty ? (
-				state.map(el => (
-					<ElementOfCartoon
-						key={el.cartonNumber}
-						cartonNumber={el.cartonNumber}
-						count={el.count}
-						navigation={navigation}
-					/>
-				))
-			) : (
-				<View>
-					{context ? (
-						<Text style={{ textAlign: 'center', marginTop: 50 }}>
-							Sorry, my state is empty
-						</Text>
-					) : (
-						<Text style={{ textAlign: 'center', marginTop: 50 }}>
-							Извини, мой стэйт пуст
-						</Text>
-					)}
-				</View>
-			)}
-			<Pressable
-				onPress={() => setLoginStatus(!loginStatus)}
-				style={{ marginTop: 20 }}
-			>
-				<View>
-					{context ? (
-						<Text style={{ textAlign: 'center', fontSize: 24, color: 'grey' }}>
-							Login
-						</Text>
-					) : (
-						<Text style={{ textAlign: 'center', fontSize: 24, color: 'grey' }}>
-							Логин
-						</Text>
-					)}
-				</View>
-			</Pressable>
-			<Modal visible={loginStatus} transparent={false}>
-				<View>
-					<Pressable onPress={() => setLoginStatus(!loginStatus)}>
-						<Text style={styles.closed}>X</Text>
+					<Pressable onPress={() => setContext(!context)}>
+						{context ? (
+							<Text style={styles.mainScreenButtons}>Change Language</Text>
+						) : (
+							<Text style={styles.mainScreenButtons}>Сменить язык</Text>
+						)}
 					</Pressable>
-					<FaceId />
+					<Pressable onPress={() => navigation.navigate('Browser')}>
+						{context ? (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								Browser
+							</Text>
+						) : (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								Браузер
+							</Text>
+						)}
+					</Pressable>
+					<Pressable onPress={() => navigation.navigate('Camera')}>
+						{context ? (
+							<Text style={styles.mainScreenButtons}>Open Camera</Text>
+						) : (
+							<Text style={styles.mainScreenButtons}>Открыть камеру</Text>
+						)}
+					</Pressable>
 				</View>
-			</Modal>
-			<Chart />
-			<RandomScreen />
-			<Pressable onPress={() => setContext(!context)}>
-				{context ? (
-					<Text style={styles.changeLang}>Change Language</Text>
-				) : (
-					<Text style={styles.changeLang}>Сменить язык</Text>
-				)}
-			</Pressable>
-			<Pressable
-				style={{ marginTop: 20 }}
-				onPress={() => navigation.navigate('Camera')}
-			>
-				{context ? (
-					<Text style={{ textAlign: 'center' }}>Open Camera</Text>
-				) : (
-					<Text style={{ textAlign: 'center' }}>Открыть камеру</Text>
-				)}
-			</Pressable>
-		</ScrollView>
+			</ScrollView>
+		</SafeAreaView>
 	)
 }
 

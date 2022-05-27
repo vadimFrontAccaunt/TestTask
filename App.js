@@ -11,6 +11,7 @@ import { CameraOpen } from './src/Camera/Camera'
 import * as SplashScreen from 'expo-splash-screen'
 import { styles } from './styles'
 import FlashMessage from 'react-native-flash-message'
+import Browser from './src/Browser/Browser'
 
 const Stack = createStackNavigator()
 
@@ -36,11 +37,6 @@ export default function App() {
 
 	const onLayoutRootView = useCallback(async () => {
 		if (appIsReady) {
-			// This tells the splash screen to hide immediately! If we call this after
-			// `setAppIsReady`, then we may see a blank screen while the app is
-			// loading its initial state and rendering its first pixels. So instead,
-			// we hide the splash screen once we know the root view has already
-			// performed layout.
 			await SplashScreen.hideAsync()
 		}
 	}, [appIsReady])
@@ -52,7 +48,7 @@ export default function App() {
 					<NavigationContainer>
 						<Stack.Navigator>
 							<Stack.Screen
-								options={{ headerTitle: '' }}
+								options={{ headerTitle: '', headerShown: false }}
 								name='Main'
 								component={MainScreen}
 							/>
@@ -65,6 +61,11 @@ export default function App() {
 								options={{ headerTitle: '' }}
 								name='Camera'
 								component={CameraOpen}
+							/>
+							<Stack.Screen
+								options={{ headerTitle: '' }}
+								name='Browser'
+								component={Browser}
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>

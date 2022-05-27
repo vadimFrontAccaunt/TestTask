@@ -31,4 +31,12 @@ export const styles = StyleSheet.create({
 		marginRight: '40%',
 		marginTop: 30,
 	},
+	mainScreenButtons: {
+		fontSize: 18,
+		width: 100,
+		textAlign: 'center',
+		borderWidth: 2,
+		height: 60,
+		paddingTop: 7,
+	},
 })
