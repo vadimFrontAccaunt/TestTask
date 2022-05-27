@@ -1,10 +1,11 @@
 import { Formik } from 'formik'
-import { Pressable, Text, View, TextInput } from 'react-native'
+import { Pressable, Text, View, TextInput, Button } from 'react-native'
 import * as yup from 'yup'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styles } from '../../styles'
 
-const LoginScreen = () => {
+const LoginScreen = ({ onAuthenticate }) => {
+	const [statusLogin, setStatusLogin] = useState(false)
 	const valid = yup.object().shape({
 		login: yup
 			.string()
@@ -76,6 +77,12 @@ const LoginScreen = () => {
 					</View>
 				)}
 			</Formik>
+			<Pressable
+				style={{ position: 'absolute', top: -50, left: '20%' }}
+				onPress={onAuthenticate}
+			>
+				<Text style={{ fontSize: 24 }}>Login with Face ID</Text>
+			</Pressable>
 		</View>
 	)
 }

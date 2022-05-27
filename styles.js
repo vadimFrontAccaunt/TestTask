@@ -12,6 +12,9 @@ export const styles = StyleSheet.create({
 		marginRight: 30,
 		color: 'red',
 		fontSize: 20,
+		position: 'absolute',
+		bottom: 150,
+		right: 0,
 	},
 	input: {
 		borderWidth: 2,

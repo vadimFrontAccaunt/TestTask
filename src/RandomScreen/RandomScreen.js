@@ -10,7 +10,6 @@ const RandomScreen = () => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			let number = Math.random().toFixed(1) * 10
-			console.log(number)
 			if (number > 4) {
 				setStatusError(false)
 				setRandomNumber(randomNumber => randomNumber + 1)

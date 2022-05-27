@@ -8,6 +8,7 @@ import RandomScreen from '../RandomScreen/RandomScreen'
 import ElementOfCartoon from './ElementOfCartoon'
 import { Context } from './Context'
 import Modal from 'react-native-modal'
+import biometricsAuth, { FaceId } from '../LoginScreen/FaceId'
 
 const MainScreen = ({ navigation }) => {
 	const state = useSelector(state => state.cartoons)
@@ -86,7 +87,7 @@ const MainScreen = ({ navigation }) => {
 					<Pressable onPress={() => setLoginStatus(!loginStatus)}>
 						<Text style={styles.closed}>X</Text>
 					</Pressable>
-					<LoginScreen />
+					<FaceId />
 				</View>
 			</Modal>
 			<Chart />
