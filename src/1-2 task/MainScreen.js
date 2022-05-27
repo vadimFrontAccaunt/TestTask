@@ -1,12 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {
-	Text,
-	View,
-	Pressable,
-	ScrollView,
-	Image,
-	SafeAreaView,
-} from 'react-native'
+import { Text, View, Pressable, ScrollView, SafeAreaView } from 'react-native'
 import { useSelector } from 'react-redux'
 import { styles } from '../../styles'
 import Chart from '../ChartBar/Chart'
@@ -150,6 +143,28 @@ const MainScreen = ({ navigation }) => {
 						)}
 					</Pressable>
 				</View>
+				<Pressable
+					onPress={() => navigation.navigate('Audio')}
+					style={[
+						styles.flex,
+						{
+							alignItems: 'center',
+							marginLeft: 5,
+							marginRight: 5,
+							marginTop: 25,
+						},
+					]}
+				>
+					{context ? (
+						<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+							Music
+						</Text>
+					) : (
+						<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+							Музычка
+						</Text>
+					)}
+				</Pressable>
 			</ScrollView>
 		</SafeAreaView>
 	)

@@ -39,4 +39,11 @@ export const styles = StyleSheet.create({
 		height: 60,
 		paddingTop: 7,
 	},
+	audioContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-evenly',
+		backgroundColor: '#ecf0f1',
+		alignItems: 'center',
+		padding: 10,
+	},
 })

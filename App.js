@@ -12,6 +12,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import { styles } from './styles'
 import FlashMessage from 'react-native-flash-message'
 import Browser from './src/Browser/Browser'
+import { AudioPlayer } from './src/AudioTask/AudioPlayer'
 
 const Stack = createStackNavigator()
 
@@ -66,6 +67,11 @@ export default function App() {
 								options={{ headerTitle: '' }}
 								name='Browser'
 								component={Browser}
+							/>
+							<Stack.Screen
+								options={{ headerTitle: '' }}
+								name='Audio'
+								component={AudioPlayer}
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>
