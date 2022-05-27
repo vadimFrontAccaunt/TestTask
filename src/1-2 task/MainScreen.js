@@ -3,12 +3,11 @@ import { Text, View, Pressable, ScrollView } from 'react-native'
 import { useSelector } from 'react-redux'
 import { styles } from '../../styles'
 import Chart from '../ChartBar/Chart'
-import LoginScreen from '../LoginScreen/LoginScreen'
 import RandomScreen from '../RandomScreen/RandomScreen'
 import ElementOfCartoon from './ElementOfCartoon'
 import { Context } from './Context'
 import Modal from 'react-native-modal'
-import biometricsAuth, { FaceId } from '../LoginScreen/FaceId'
+import { FaceId } from '../LoginScreen/FaceId'
 
 const MainScreen = ({ navigation }) => {
 	const state = useSelector(state => state.cartoons)
