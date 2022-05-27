@@ -10,6 +10,7 @@ import ThecondScreen from './src/1-2 task/ThecondScreen'
 import { CameraOpen } from './src/Camera/Camera'
 import * as SplashScreen from 'expo-splash-screen'
 import { styles } from './styles'
+import FlashMessage from 'react-native-flash-message'
 
 const Stack = createStackNavigator()
 
@@ -67,6 +68,7 @@ export default function App() {
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>
+					<FlashMessage position='top' />
 				</Context.Provider>
 			</Provider>
 		)

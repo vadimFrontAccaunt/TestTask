@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Text, View, Pressable, ScrollView } from 'react-native'
 import { useSelector } from 'react-redux'
 import { styles } from '../../styles'
@@ -8,11 +8,25 @@ import ElementOfCartoon from './ElementOfCartoon'
 import { Context } from './Context'
 import Modal from 'react-native-modal'
 import { FaceId } from '../LoginScreen/FaceId'
+import { showMessage } from 'react-native-flash-message'
 
 const MainScreen = ({ navigation }) => {
 	const state = useSelector(state => state.cartoons)
 	const [loginStatus, setLoginStatus] = useState(false)
 	const [context, setContext] = useContext(Context)
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			showMessage({
+				message: 'Heelooo broth',
+				type: 'info',
+				duration: 3000,
+				statusBarHeight: 50,
+				titleStyle: { fontSize: 18, textAlign: 'center' },
+			})
+		}, 5000)
+		return () => clearInterval(interval)
+	}, [])
 
 	let empty
 	if (state.length === 0) {
