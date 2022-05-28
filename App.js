@@ -14,6 +14,7 @@ import FlashMessage from 'react-native-flash-message'
 import Browser from './src/Browser/Browser'
 import { AudioPlayer } from './src/AudioTask/AudioPlayer'
 import { QrCode } from './src/QrCode/QrCode'
+import { PushNotification } from './src/PushNotification/PushNotification'
 
 const Stack = createStackNavigator()
 
@@ -78,6 +79,11 @@ export default function App() {
 								options={{ headerTitle: '' }}
 								name='QrCode'
 								component={QrCode}
+							/>
+							<Stack.Screen
+								options={{ headerTitle: '' }}
+								name='Push'
+								component={PushNotification}
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>
