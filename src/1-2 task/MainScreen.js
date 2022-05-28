@@ -6,8 +6,6 @@ import Chart from '../ChartBar/Chart'
 import RandomScreen from '../RandomScreen/RandomScreen'
 import ElementOfCartoon from './ElementOfCartoon'
 import { Context } from './Context'
-import Modal from 'react-native-modal'
-import { FaceId } from '../LoginScreen/FaceId'
 import { showMessage } from 'react-native-flash-message'
 
 const MainScreen = ({ navigation }) => {
@@ -82,7 +80,7 @@ const MainScreen = ({ navigation }) => {
 					</View>
 				)}
 				<Pressable
-					onPress={() => setLoginStatus(!loginStatus)}
+					onPress={() => navigation.navigate('Login')}
 					style={{ marginTop: 20 }}
 				>
 					<View>
@@ -101,14 +99,6 @@ const MainScreen = ({ navigation }) => {
 						)}
 					</View>
 				</Pressable>
-				<Modal visible={loginStatus} transparent={false}>
-					<View>
-						<Pressable onPress={() => setLoginStatus(!loginStatus)}>
-							<Text style={styles.closed}>X</Text>
-						</Pressable>
-						<FaceId />
-					</View>
-				</Modal>
 				<Chart />
 				<RandomScreen />
 				<View

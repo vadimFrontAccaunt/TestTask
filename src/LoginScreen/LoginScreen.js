@@ -1,22 +1,25 @@
 import { Formik } from 'formik'
 import { Pressable, Text, View, TextInput, Button } from 'react-native'
 import * as yup from 'yup'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { styles } from '../../styles'
+import Modal from 'react-native-modal'
+import { FaceId } from './FaceId'
 
-const LoginScreen = ({ onAuthenticate }) => {
+const LoginScreen = () => {
 	const [statusLogin, setStatusLogin] = useState(false)
+	const [statusFaceId, setStatusFaceId] = useState(false)
 	const valid = yup.object().shape({
 		login: yup
 			.string()
 			.min(7)
 			.typeError('Должно быть строкой')
-			.required('Обязательно'),
+			.required('Обязательно к заполнению'),
 		pass: yup
 			.string()
 			.min(7)
 			.typeError('Должно быть строкой')
-			.required('Обязательно')
+			.required('Обязательно к заполнению')
 			.matches(/[A-Z]/, 'must contain one uppercase')
 			.matches(/([a-z])/, 'must contain one lowercase')
 			.matches(/(\d)/, 'must contain one number')
@@ -26,7 +29,7 @@ const LoginScreen = ({ onAuthenticate }) => {
 	return (
 		<View>
 			<Formik
-				initialValues={{ login: '', pass: '' }}
+				initialValues={{ login: null, pass: null }}
 				validateOnBlur
 				onSubmit={values =>
 					alert('login :' + values.login + ' password :' + values.pass)
@@ -46,7 +49,7 @@ const LoginScreen = ({ onAuthenticate }) => {
 						<Text style={[styles.input, { borderWidth: 0 }]}>Login</Text>
 						<TextInput
 							style={styles.input}
-							onChange={handleChange('login')}
+							onChangeText={handleChange('login')}
 							value={values.login}
 							onBlur={handleBlur('login')}
 						/>
@@ -58,7 +61,7 @@ const LoginScreen = ({ onAuthenticate }) => {
 						<Text style={[styles.input, { borderWidth: 0 }]}>Password</Text>
 						<TextInput
 							style={styles.input}
-							onChange={handleChange('pass')}
+							onChangeText={handleChange('pass')}
 							value={values.pass}
 							onBlur={handleBlur('pass')}
 						/>
@@ -77,11 +80,11 @@ const LoginScreen = ({ onAuthenticate }) => {
 					</View>
 				)}
 			</Formik>
-			<Pressable
-				style={{ position: 'absolute', top: -50, left: '20%' }}
-				onPress={onAuthenticate}
-			>
-				<Text style={{ fontSize: 24 }}>Login with Face ID</Text>
+			<Pressable>
+				<Text style={{ fontSize: 24, textAlign: 'center', marginTop: 30 }}>
+					Login with Face ID
+				</Text>
+				<FaceId />
 			</Pressable>
 		</View>
 	)

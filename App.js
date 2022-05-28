@@ -13,9 +13,10 @@ import { styles } from './styles'
 import FlashMessage from 'react-native-flash-message'
 import Browser from './src/Browser/Browser'
 import { AudioPlayer } from './src/AudioTask/AudioPlayer'
-import { QrCode } from './src/QrCode/QrCode'
 import { PushNotification } from './src/PushNotification/PushNotification'
 import { Map } from './src/MapGps/Map'
+import QrCode from './src/QrCode/QrCode'
+import LoginScreen from './src/LoginScreen/LoginScreen'
 
 const Stack = createStackNavigator()
 
@@ -90,6 +91,11 @@ export default function App() {
 								options={{ headerTitle: '' }}
 								name='Map'
 								component={Map}
+							/>
+							<Stack.Screen
+								options={{ headerTitle: '' }}
+								name='Login'
+								component={LoginScreen}
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>

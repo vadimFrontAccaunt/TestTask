@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import { BarCodeScanner } from 'expo-barcode-scanner'
-import { styles } from '../../styles'
 
-export const QrCode = () => {
+export default function QrCode() {
 	const [hasPermission, setHasPermission] = useState(null)
 	const [scanned, setScanned] = useState(false)
 
@@ -38,3 +37,11 @@ export const QrCode = () => {
 		</View>
 	)
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+	},
+})
