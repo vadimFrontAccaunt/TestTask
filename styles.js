@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Dimensions } from 'react-native'
 
 export const styles = StyleSheet.create({
 	flex: {
@@ -50,5 +51,25 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'center',
+	},
+	containerMap: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	map: {
+		width: Dimensions.get('window').width,
+		height: Dimensions.get('window').height,
+	},
+	containerLocation: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: 20,
+	},
+	paragraph: {
+		fontSize: 18,
+		textAlign: 'center',
 	},
 })

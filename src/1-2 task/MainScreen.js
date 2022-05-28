@@ -9,7 +9,6 @@ import { Context } from './Context'
 import Modal from 'react-native-modal'
 import { FaceId } from '../LoginScreen/FaceId'
 import { showMessage } from 'react-native-flash-message'
-import { PushNotification } from '../PushNotification/PushNotification'
 
 const MainScreen = ({ navigation }) => {
 	const state = useSelector(state => state.cartoons)
@@ -182,6 +181,29 @@ const MainScreen = ({ navigation }) => {
 							<Text style={[styles.mainScreenButtons]}>Push notification</Text>
 						) : (
 							<Text style={[styles.mainScreenButtons]}>Пуш уведомление</Text>
+						)}
+					</Pressable>
+				</View>
+				<View
+					style={[
+						styles.flex,
+						{
+							alignItems: 'center',
+							marginLeft: 5,
+							marginRight: 5,
+							marginTop: 25,
+						},
+					]}
+				>
+					<Pressable onPress={() => navigation.navigate('Map')}>
+						{context ? (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								Map
+							</Text>
+						) : (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								Карта
+							</Text>
 						)}
 					</Pressable>
 				</View>

@@ -15,6 +15,7 @@ import Browser from './src/Browser/Browser'
 import { AudioPlayer } from './src/AudioTask/AudioPlayer'
 import { QrCode } from './src/QrCode/QrCode'
 import { PushNotification } from './src/PushNotification/PushNotification'
+import { Map } from './src/MapGps/Map'
 
 const Stack = createStackNavigator()
 
@@ -84,6 +85,11 @@ export default function App() {
 								options={{ headerTitle: '' }}
 								name='Push'
 								component={PushNotification}
+							/>
+							<Stack.Screen
+								options={{ headerTitle: '' }}
+								name='Map'
+								component={Map}
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>
