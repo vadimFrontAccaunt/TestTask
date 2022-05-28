@@ -143,8 +143,7 @@ const MainScreen = ({ navigation }) => {
 						)}
 					</Pressable>
 				</View>
-				<Pressable
-					onPress={() => navigation.navigate('Audio')}
+				<View
 					style={[
 						styles.flex,
 						{
@@ -155,16 +154,29 @@ const MainScreen = ({ navigation }) => {
 						},
 					]}
 				>
-					{context ? (
-						<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
-							Music
-						</Text>
-					) : (
-						<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
-							Музычка
-						</Text>
-					)}
-				</Pressable>
+					<Pressable onPress={() => navigation.navigate('Audio')}>
+						{context ? (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								Music
+							</Text>
+						) : (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								Музычка
+							</Text>
+						)}
+					</Pressable>
+					<Pressable onPress={() => navigation.navigate('QrCode')}>
+						{context ? (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								QR code
+							</Text>
+						) : (
+							<Text style={[styles.mainScreenButtons, { paddingTop: 17 }]}>
+								QR код
+							</Text>
+						)}
+					</Pressable>
+				</View>
 			</ScrollView>
 		</SafeAreaView>
 	)

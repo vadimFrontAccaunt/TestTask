@@ -63,8 +63,6 @@ export const AudioPlayer = () => {
 			useNativeDriver: false,
 		}).stop()
 	}
-	console.log(fadeAnim)
-	console.log(status)
 	return (
 		<View>
 			<View style={styles.audioContainer}>

@@ -13,6 +13,7 @@ import { styles } from './styles'
 import FlashMessage from 'react-native-flash-message'
 import Browser from './src/Browser/Browser'
 import { AudioPlayer } from './src/AudioTask/AudioPlayer'
+import { QrCode } from './src/QrCode/QrCode'
 
 const Stack = createStackNavigator()
 
@@ -72,6 +73,11 @@ export default function App() {
 								options={{ headerTitle: '' }}
 								name='Audio'
 								component={AudioPlayer}
+							/>
+							<Stack.Screen
+								options={{ headerTitle: '' }}
+								name='QrCode'
+								component={QrCode}
 							/>
 						</Stack.Navigator>
 					</NavigationContainer>
