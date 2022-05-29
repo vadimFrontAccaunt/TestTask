@@ -4,10 +4,8 @@
 		"slug": "TestProject",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
 		"splash": {
-			"image": "./assets/splash.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},
@@ -16,16 +14,20 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
+			"bundleIdentifier": "com.yourcompany.yourappname",
+			"buildNumber": "1.0.0",
 			"supportsTablet": true,
 			"infoPlist": {
 				"NSFaceIDUsageDescription": "face id is usage fo auth"
 			}
 		},
 		"android": {
+			"package": "com.yourcompany.yourappname",
+			"versionCode": 1,
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
 				"backgroundColor": "#FFFFFF"
-			}
+			},
+			"package": "com.vadim_skorohod.TestProject"
 		},
 		"web": {
 			"favicon": "./assets/favicon.png"
@@ -34,12 +36,8 @@
 			[
 				"expo-notifications",
 				{
-					"icon": "./local/assets/notification-icon.png",
 					"color": "#ffffff",
-					"sounds": [
-						"./local/assets/notification-sound.wav",
-						"./local/assets/notification-sound-other.wav"
-					]
+					"sounds": []
 				}
 			]
 		]
